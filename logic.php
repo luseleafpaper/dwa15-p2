@@ -72,14 +72,13 @@ function get_words() {
             $content = file_get_contents($url);
             file_put_contents("scrape.html", $content, FILE_APPEND);
         }
-
         for ($i=11; $i<30; $i=$i+2) {
             $url = "http://www.paulnoll.com/Books/Clear-English/words-".$i."-".($i+1)."-hundred.html";
             $content = file_get_contents($url);
             file_put_contents("scrape.html", $content, FILE_APPEND);
         }
-        $content = file_get_contents("scrape.html");
 
+        $content = file_get_contents("scrape.html");
         $count = preg_match_all("/<li>\s*(.*)\s*<\/li>/U", $content, $matches);
 
         file_put_contents("words.csv", ""); #clear this word list as well 
