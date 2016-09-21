@@ -22,14 +22,15 @@ function get_password($words, $number, $symbol)
   } 
 
 
-  echo "You want ".$words." words";
-  if ($number=="on") echo " with a number";
-  if ($symbol=="on") echo " with a symbol";
-  echo ".<br>";
+  #echo "Here's a ".$words."-word password"; 
+  #if ($number=="on") echo " with a number";
+  #if ($symbol=="on") echo " with a symbol";
+  #echo ".<br>";
   
   $word_array=get_words(); 
 
   $rand_keys = array_rand($word_array, $words); 
+  if ($words==1) { $rand_keys=array($rand_keys); }  
 
   $password =""; 
   for ($i=0; $i<$words; $i++){ 

@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);       # Report Errors, Warnings, and Notices
 ini_set('display_errors', 1); # Display errors on page (instead of a log file)
+
 ?>
 
 <!doctype html>
@@ -35,36 +36,42 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 
 
 		<div id="main"> <!-- Begin main section -->		
-        <form class="pure-form pure-form-aligned" action="" method="post"> <!-- Begin main form -->
+
+      <div id="password"> <!-- Begin password -->  
+        <?php 
+        require("logic.php");
+        if (isset($_POST["submit-button"])) {
+          echo get_password( $_POST["words"], is_checked("number"),is_checked("symbol"));
+        }
+        else 
+        {
+          echo get_password(4, "false", "false"); 
+        }
+        ?>
+     </div> <!--end password -->
+
+      <form class="pure-form pure-form-aligned" action="" method="post"> <!-- Begin main form -->
         <fieldset>
-            
-            <div class="pure-control-group">
-                <label for="words">Number of words (max 9)</label>
-                <input name="words" type="number" placeholder="4" min="1" max="9">
-            </div>
-            <div class="pure-controls">
-                <label for="number" class="pure-checkbox">
-                <input name="number" type="checkbox"> Add a number 
-                </label>
-            </div>
-            <div class="pure-controls">
-                <label for="symbol" class="pure-checkbox">
-                <input name="symbol" type="checkbox"> Add a symbol 
-                </label>
-                <button name="submit-button" type="submit" class="pure-button pure-button-primary">Submit</button>
-            </div>
+          <div class="pure-control-group">
+              <label for="words">Number of words (max 9)</label>
+              <input name="words" type="number" placeholder="4" min="1" max="9">
+          </div>
+          <div class="pure-controls">
+              <label for="number" class="pure-checkbox">
+              <input name="number" type="checkbox"> Add a number 
+              </label>
+          </div>
+          <div class="pure-controls">
+              <label for="symbol" class="pure-checkbox">
+              <input name="symbol" type="checkbox"> Add a symbol 
+              </label>
+              <button name="submit-button" type="submit" class="pure-button pure-button-primary">Submit</button>
+          </div>
         </fieldset>
-    </form><!-- End main form --> 
+      </form><!-- End main form --> 
         
 		</div> <!-- End main section -->		
 	</div> <!-- End container main section -->		
-
-<?php if (isset($_POST["submit-button"])) {
-  
-  require("logic.php");
-  echo get_password( $_POST["words"], is_checked("number"),is_checked("symbol"));
-}
-?>
 
 </body>
 </html>
