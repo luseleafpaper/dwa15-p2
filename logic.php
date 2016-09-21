@@ -67,21 +67,25 @@ function get_words() {
     # If there are too few words in the list, rescrape Paul Noll's word lists
     if (count($words)<=1000) {
         file_put_contents("scrape.html", ""); #clear the contents of this file 
+        #Scrape single digit number pages
         for ($i=1; $i<9; $i=$i+2) {
             $url = "http://www.paulnoll.com/Books/Clear-English/words-0".$i."-0".($i+1)."-hundred.html";
             $content = file_get_contents($url);
             file_put_contents("scrape.html", $content, FILE_APPEND);
         }
+        #Scrape double digit number pages
         for ($i=11; $i<30; $i=$i+2) {
             $url = "http://www.paulnoll.com/Books/Clear-English/words-".$i."-".($i+1)."-hundred.html";
             $content = file_get_contents($url);
             file_put_contents("scrape.html", $content, FILE_APPEND);
         }
 
+        # Find all <li> elements and store them into matches
         $content = file_get_contents("scrape.html");
         $count = preg_match_all("/<li>\s*(.*)\s*<\/li>/U", $content, $matches);
 
         file_put_contents("words.csv", ""); #clear this word list as well 
+	# For match in matches, strip and add the word to the words.csv 
         for ($i = 0; $i < $count; $i++) {
             $word = trim( $matches[1][$i]);
             file_put_contents("words.csv", $word."\n", FILE_APPEND);
