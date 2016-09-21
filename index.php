@@ -32,28 +32,39 @@
 
 
 		<div id="main"> <!-- Begin main section -->		
-        <form class="pure-form pure-form-aligned" action="logic.php" method="post"> <!-- Begin main form -->
+        <form class="pure-form pure-form-aligned" action="" method="post"> <!-- Begin main form -->
         <fieldset>
             <div class="pure-control-group">
+                <label for="name">Name</label>
+                <input name="name" type="text" placeholder="Lu">
+            </div>
+            <div class="pure-control-group">
                 <label for="words">Number of words (max 9)</label>
-                <input id="words" type="number" placeholder="4" min="1" max="9">
+                <input name="words" type="number" placeholder="4" min="1" max="9">
             </div>
             <div class="pure-controls">
                 <label for="number" class="pure-checkbox">
-                    <input id="number" type="checkbox"> Add a number 
+                <input name="number" type="checkbox"> Add a number 
                 </label>
             </div>
             <div class="pure-controls">
                 <label for="symbol" class="pure-checkbox">
-                    <input id="symbol" type="checkbox"> Add a symbol 
+                <input name="symbol" type="checkbox"> Add a symbol 
                 </label>
-                <button type="submit" class="pure-button pure-button-primary">Submit</button>
+                <button name="submit-button" type="submit" class="pure-button pure-button-primary">Submit</button>
             </div>
         </fieldset>
     </form><!-- End main form --> 
         
 		</div> <!-- End main section -->		
 	</div> <!-- End container main section -->		
+
+<?php if (isset($_POST["submit-button"])) {
+  echo "Welcome ".$_POST["name"]."<br>"; 
+  if ($_POST["number"]=="on") echo "You've also requested a number <br>";
+  if ($_POST["symbol"]=="on") echo "You've also requested a symbol <br>"; 
+}
+?>
 
 </body>
 </html>
