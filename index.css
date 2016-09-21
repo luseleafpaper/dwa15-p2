@@ -1,4 +1,4 @@
-* 
+    * 
 	{ 
 	font-family: Montserrat; 
 	line-height: 200%;
@@ -20,9 +20,9 @@
 	}
 	#password
 	{
+    width:80%;
     text-align: center; 
     margin: auto;
-    width: 50%;
     background-color: lightgrey;
     padding: 10px; 
 	}

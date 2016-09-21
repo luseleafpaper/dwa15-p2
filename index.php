@@ -13,14 +13,8 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
   
   <title>Project 2</title>
   
-  <!-- You may or not not use jQuery; but, here just to show as example -->
-  <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
-  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script> 
-  
   <!-- you can choose another font-family, and even have as many as you design requires. -->
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet" type="text/css">
   
   <!-- external css stylesheets  -->
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
@@ -37,7 +31,7 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 
 		<div id="main"> <!-- Begin main section -->		
 
-      <div id="password"> <!-- Begin password -->  
+    <div id="password"> <!-- Begin password -->  
         <?php 
         require("logic.php");
         if (isset($_POST["submit-button"])) {
@@ -48,20 +42,21 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
           echo get_password(4, "false", "false"); 
         }
         ?>
-     </div> <!--end password -->
+     </div><br> <!--end password -->
 
-      <form action="" method="post"> <!-- Begin main form -->
-        
-              How many words?: 
+     <form class="pure-form" action="" method="post"> <!-- Begin main form -->
+        <fieldset>
+          <legend>Generate an XKCD-style password!</legend>
+              How many words?  
               <input name="words" type="number" placeholder="1-9" min="1" max="9">
               <br>
               <input name="number" type="checkbox"> Add a number 
               <input name="symbol" type="checkbox"> Add a symbol 
               <br>
               <button name="submit-button" type="submit" class="pure-button pure-button-primary">Submit</button>
-          </div>
         </fieldset>
       </form><!-- End main form --> 
+
         
 		</div> <!-- End main section -->		
 	</div> <!-- End container main section -->		
