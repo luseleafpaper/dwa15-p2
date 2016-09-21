@@ -1,4 +1,7 @@
-
+<?php
+error_reporting(E_ALL);       # Report Errors, Warnings, and Notices
+ini_set('display_errors', 1); # Display errors on page (instead of a log file)
+?>
 
 <!doctype html>
 <html>
@@ -34,10 +37,7 @@
 		<div id="main"> <!-- Begin main section -->		
         <form class="pure-form pure-form-aligned" action="" method="post"> <!-- Begin main form -->
         <fieldset>
-            <div class="pure-control-group">
-                <label for="name">Name</label>
-                <input name="name" type="text" placeholder="Lu">
-            </div>
+            
             <div class="pure-control-group">
                 <label for="words">Number of words (max 9)</label>
                 <input name="words" type="number" placeholder="4" min="1" max="9">
@@ -60,9 +60,9 @@
 	</div> <!-- End container main section -->		
 
 <?php if (isset($_POST["submit-button"])) {
-  echo "Welcome ".$_POST["name"]."<br>"; 
-  if ($_POST["number"]=="on") echo "You've also requested a number <br>";
-  if ($_POST["symbol"]=="on") echo "You've also requested a symbol <br>"; 
+  
+  require("logic.php");
+  get_password( $_POST["words"], $_POST["number"],$_POST["symbol"]);
 }
 ?>
 
