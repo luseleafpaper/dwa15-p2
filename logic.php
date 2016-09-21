@@ -9,8 +9,21 @@ function get_password($words, $number, $symbol)
   if ($symbol=="on") echo " with a symbol";
   echo ".<br>";
   
-  $words=get_words(); 
-  echo "The first word is ".$words[0]; 
+  $word_array=get_words(); 
+  echo $word_array[0]; 
+
+  $rand_keys = array_rand($word_array, $words); 
+  echo "count of keys:".count($rand_keys)."<br>"; 
+  echo "first key:".$rand_keys[0]."<br>"; 
+  echo "first key:".$rand_keys[1]."<br>"; 
+  echo "first key:".$rand_keys[2]."<br>"; 
+  $password =""; 
+  #for ($i=0; $i<$words; $i++){ 
+  #  $word_index = $rand_keys[$i]; 
+  #  echo $word_array[$word_index]; 
+  #} 
+
+  echo "password:".$password."<br>";
 
 } 
 
@@ -51,6 +64,5 @@ function get_words() {
 
     return $words;
 }
-
 ?>
 
