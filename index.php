@@ -50,21 +50,14 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
         ?>
      </div> <!--end password -->
 
-      <form class="pure-form pure-form-aligned" action="" method="post"> <!-- Begin main form -->
-        <fieldset>
-          <div class="pure-control-group">
-              <label for="words">Number of words (max 9)</label>
-              <input name="words" type="number" placeholder="4" min="1" max="9">
-          </div>
-          <div class="pure-controls">
-              <label for="number" class="pure-checkbox">
+      <form action="" method="post"> <!-- Begin main form -->
+        
+              How many words?: 
+              <input name="words" type="number" placeholder="1-9" min="1" max="9">
+              <br>
               <input name="number" type="checkbox"> Add a number 
-              </label>
-          </div>
-          <div class="pure-controls">
-              <label for="symbol" class="pure-checkbox">
               <input name="symbol" type="checkbox"> Add a symbol 
-              </label>
+              <br>
               <button name="submit-button" type="submit" class="pure-button pure-button-primary">Submit</button>
           </div>
         </fieldset>
