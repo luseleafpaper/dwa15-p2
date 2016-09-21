@@ -16,8 +16,8 @@ function is_checked($checkname)
 function get_password($words, $number, $symbol) 
 { 
 
-  if ($words > 9) { 
-    echo "Invalid number of words. Must be a number less than 9"; 
+  if (($words > 9) || ($words < 1)) { 
+    echo "Invalid number of words. Must be a number less than 9 and greater than 1"; 
     return ; 
   } 
 
@@ -30,7 +30,6 @@ function get_password($words, $number, $symbol)
   $word_array=get_words(); 
 
   $rand_keys = array_rand($word_array, $words); 
-  echo "count of keys:".count($rand_keys)."<br>"; 
 
   $password =""; 
   for ($i=0; $i<$words; $i++){ 
@@ -38,8 +37,20 @@ function get_password($words, $number, $symbol)
     $password=$password.$word_array[$word_index];
   } 
 
-  echo "password:".$password."<br>";
+  if ($number=="on")
+  {
+    $numbers = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 0); 
+    $num_index = array_rand($numbers); 
+    $password.=$numbers[$num_index];
+  }
+  if ($symbol=="on")
+  {
+    $numbers = array("!", "@", "#", "$", "%", "^", "&", "*", "?"); 
+    $num_index = array_rand($numbers); 
+    $password.=$numbers[$num_index];
+  } 
 
+  return $password; 
 } 
 
 function get_words() {

@@ -62,8 +62,7 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 <?php if (isset($_POST["submit-button"])) {
   
   require("logic.php");
-  #get_password( $_POST["words"], $_POST["number"],$_POST["symbol"]);
-  get_password( $_POST["words"], is_checked("number"),is_checked("symbol"));
+  echo get_password( $_POST["words"], is_checked("number"),is_checked("symbol"));
 }
 ?>
 
