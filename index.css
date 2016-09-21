@@ -1,0 +1,38 @@
+* 
+	{ 
+	font-family: Montserrat; 
+	line-height: 200%;
+	padding: 0px;
+	margin: 0px;
+	}
+	
+	#container 
+	{
+	margin: auto; 
+	}
+	
+	#main 
+	{
+	width: 100%;
+	text-align: center;
+	margin: auto;
+	margin-top: 90px;
+	}
+	#password
+	{
+    text-align: center; 
+    margin: auto;
+    width: 50%;
+    background-color: lightgrey;
+    padding: 10px; 
+	}
+    input[type=number]
+    {
+    width: 80px;
+    } 
+	
+	.bubble_img 
+	{
+	border-radius: 50%;
+	} 
+
