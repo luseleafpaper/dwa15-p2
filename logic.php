@@ -66,6 +66,7 @@ function get_words() {
 
     # If there are too few words in the list, rescrape Paul Noll's word lists
     if (count($words)<=1000) {
+        file_put_contents("scrape.html", ""); #clear the contents of this file 
         for ($i=1; $i<9; $i=$i+2) {
             $url = "http://www.paulnoll.com/Books/Clear-English/words-0".$i."-0".($i+1)."-hundred.html";
             $content = file_get_contents($url);
@@ -81,6 +82,7 @@ function get_words() {
 
         $count = preg_match_all("/<li>\s*(.*)\s*<\/li>/U", $content, $matches);
 
+        file_put_contents("words.csv", ""); #clear this word list as well 
         for ($i = 0; $i < $count; $i++) {
             $word = trim( $matches[1][$i]);
             file_put_contents("words.csv", $word."\n", FILE_APPEND);
