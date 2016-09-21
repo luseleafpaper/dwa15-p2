@@ -2,33 +2,48 @@
 error_reporting(E_ALL);       # Report Errors, Warnings, and Notices
 ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 
+function is_checked($checkname) 
+{
+    if (empty($_POST[$checkname])) { 
+        return "false";
+    } 
+    else 
+    {
+        return "on";
+    } 
+}
+
 function get_password($words, $number, $symbol) 
 { 
+
+  if ($words > 9) { 
+    echo "Invalid number of words. Must be a number less than 9"; 
+    return ; 
+  } 
+
+
   echo "You want ".$words." words";
   if ($number=="on") echo " with a number";
   if ($symbol=="on") echo " with a symbol";
   echo ".<br>";
   
   $word_array=get_words(); 
-  echo $word_array[0]; 
 
   $rand_keys = array_rand($word_array, $words); 
   echo "count of keys:".count($rand_keys)."<br>"; 
-  echo "first key:".$rand_keys[0]."<br>"; 
-  echo "first key:".$rand_keys[1]."<br>"; 
-  echo "first key:".$rand_keys[2]."<br>"; 
+
   $password =""; 
-  #for ($i=0; $i<$words; $i++){ 
-  #  $word_index = $rand_keys[$i]; 
-  #  echo $word_array[$word_index]; 
-  #} 
+  for ($i=0; $i<$words; $i++){ 
+    $word_index = $rand_keys[$i]; 
+    $password=$password.$word_array[$word_index];
+  } 
 
   echo "password:".$password."<br>";
 
 } 
 
 function get_words() {
-    # Check if words.csv is populated 
+    # reads in words from words.csv
     $file = "words.csv";
     $words = array();
     $filep = fopen($file, "r");
@@ -37,8 +52,7 @@ function get_words() {
         $words[]=$line;
     }
 
-    echo "Word list includes ".count($words)." words<br>";
-
+    # If there are too few words in the list, rescrape Paul Noll's word lists
     if (count($words)<=1000) {
         for ($i=1; $i<9; $i=$i+2) {
             $url = "http://www.paulnoll.com/Books/Clear-English/words-0".$i."-0".($i+1)."-hundred.html";
