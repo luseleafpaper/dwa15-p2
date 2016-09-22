@@ -21,9 +21,18 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
   <link href="index.css" rel="stylesheet" type="text/css">
   <!-- Universal selector:  means all character data will take on the Raleway font-family look -->
   <style>
-    
+   
   </style>
  
+  <script type="text/javascript">
+    function yesnoCheck() {
+      if (document.getElementById('yesCheck').checked) {
+          document.getElementById('ifYes').style.display = 'block';
+      } else {
+          document.getElementById('ifYes').style.display = 'none';
+      }
+    }
+  </script>
  </head>
 <body>
 	<div id="container">
@@ -50,8 +59,15 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
               How many words?  
               <input name="words" type="number" placeholder="1-9" min="1" max="9">
               <br>
-              <input name="number" type="checkbox"> Add a number 
+              <input id="yesCheck" name="number" type="checkbox" onchange="javascript:yesnoCheck();"> Add a number 
+              <div id="ifYes" style="display:none">
+                How many numbers? <input name="numbers" placeholder="1" min="1" max="9">
+              </div>
               <input name="symbol" type="checkbox"> Add a symbol 
+              <br>
+              <input name="camelcase" type="checkbox"> camelCase? 
+              <input name="caps" type="checkbox"> ALL CAPS? 
+              <input name="lower" type="checkbox"> all lowercase? 
               <br>
               <button name="submit-button" type="submit" class="pure-button pure-button-primary">Submit</button>
         </fieldset>
