@@ -20,7 +20,7 @@ For this project, I had to:
 
 # Any details the instructor or TA needs to know about using your project.
 
-None so far! 
+Sorry for all the background noise in the screencast... There was a VERY ANGRY MAN sitting next to me in the library who was giving some customer service representative a terrible time. 
 
 # A list of any plugins, libraries, packages or outside code used in the project
 
