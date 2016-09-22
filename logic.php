@@ -1,12 +1,12 @@
 <?php 
-error_reporting(E_ALL);       # Report Errors, Warnings, and Notices
-ini_set('display_errors', 1); # Display errors on page (instead of a log file)
+#error_reporting(E_ALL);       # Report Errors, Warnings, and Notices
+#ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 
 function is_checked($checkname) 
 {
     if (empty($_POST[$checkname])) { 
         return "false";
-    } 
+    }
     else 
     {
         return $_POST[$checkname];
@@ -20,17 +20,8 @@ function get_password($words, $number, $symbol, $nnumbers, $cases)
     echo "Invalid number of words. Must be a number less than 9 and greater than 1"; 
     return ; 
   } 
-  if (($nnumbers > 9) || ($nnumbers < 1)) { 
-    echo "Invalid number of numbers. Must be a number less than 9 and greater than 1"; 
-    return ; 
-  } 
 
 
-  #echo "Here's a ".$words."-word password"; 
-  #if ($number=="on") echo " with a number";
-  #if ($symbol=="on") echo " with a symbol";
-  #echo ".<br>";
-  
   $word_array=get_words(); 
 
   $rand_keys = array_rand($word_array, $words); 
@@ -57,6 +48,11 @@ function get_password($words, $number, $symbol, $nnumbers, $cases)
   # Add number(s), if necessary
   if ($number=="on")
   {
+
+    if (($nnumbers > 9) || ($nnumbers < 1)) { 
+      echo "Invalid number of numbers. Must be a number less than 9 and greater than 1"; 
+      return ; 
+    } 
     $numbers = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 0); 
     if ($numbers=="false") {
       $num_index = array_rand($numbers); 
