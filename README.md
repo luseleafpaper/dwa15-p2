@@ -29,3 +29,5 @@ I used 3rd party software to screencast:  RecordMyDesktop from Ubuntu 16.06 to c
 The web server I'm running is the standard Apache web server, installed via apt-get apache2 
 
 I use Yahoo Pure CSS api for my form.
+
+I also referenced [this](https://stackoverflow.com/questions/17621515/how-to-show-and-hide-input-fields-based-on-radio-button-selection) stackoverflow page for the JavaScript that hides the number of numbers input. 
