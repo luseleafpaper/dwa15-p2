@@ -9,15 +9,19 @@ function is_checked($checkname)
     } 
     else 
     {
-        return "on";
+        return $_POST[$checkname];
     } 
 }
 
-function get_password($words, $number, $symbol) 
+function get_password($words, $number, $symbol, $nnumbers, $cases) 
 { 
 
   if (($words > 9) || ($words < 1)) { 
     echo "Invalid number of words. Must be a number less than 9 and greater than 1"; 
+    return ; 
+  } 
+  if (($nnumbers > 9) || ($nnumbers < 1)) { 
+    echo "Invalid number of numbers. Must be a number less than 9 and greater than 1"; 
     return ; 
   } 
 
@@ -32,23 +36,45 @@ function get_password($words, $number, $symbol)
   $rand_keys = array_rand($word_array, $words); 
   if ($words==1) { $rand_keys=array($rand_keys); }  
 
+  # Form a password string 
   $password =""; 
   for ($i=0; $i<$words; $i++){ 
     $word_index = $rand_keys[$i]; 
     $password=$password.$word_array[$word_index];
   } 
 
+  # Add special case formatting 
+  if ($cases=="camel") { 
+    $password = lcfirst(ucwords($password)); 
+  } 
+  else if ($cases=="lower") { 
+    $password = strtolower($password);
+  } 
+  else if ($cases=="caps") {
+    $password = strtoupper($password);
+  }
+
+  # Add number(s), if necessary
   if ($number=="on")
   {
     $numbers = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 0); 
-    $num_index = array_rand($numbers); 
-    $password.=$numbers[$num_index];
+    if ($numbers=="false") {
+      $num_index = array_rand($numbers); 
+      $password.=$numbers[$num_index];
+    } else { 
+      for ($i=0; $i<$nnumbers; $i++) { 
+        $num_index = array_rand($numbers);
+        $password.=$numbers[$num_index];
+      }
+    }    
   }
+
+  # Add symbol, if necessary 
   if ($symbol=="on")
   {
-    $numbers = array("!", "@", "#", "$", "%", "^", "&", "*", "?"); 
-    $num_index = array_rand($numbers); 
-    $password.=$numbers[$num_index];
+    $symbols = array("!", "@", "#", "$", "%", "^", "&", "*", "?"); 
+    $sym_index = array_rand($symbols); 
+    $password.=$symbols[$sym_index];
   } 
 
   return $password; 

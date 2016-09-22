@@ -44,7 +44,7 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
         <?php 
         require("logic.php");
         if (isset($_POST["submit-button"])) {
-          echo get_password( $_POST["words"], is_checked("number"),is_checked("symbol"));
+          echo get_password( $_POST["words"], is_checked("number"),is_checked("symbol"), is_checked("numbers"), is_checked("cases"));
         }
         else 
         {
@@ -56,18 +56,20 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
      <form class="pure-form" action="" method="post"> <!-- Begin main form -->
         <fieldset>
           <legend>Generate an XKCD-style password!</legend>
-              How many words?  
-              <input name="words" type="number" placeholder="1-9" min="1" max="9">
+              How many words? (1 through 9) 
+              <input name="words" type="number" value="4" min="1" max="9">
+              <br>
+              <input name="symbol" type="checkbox"> Add a symbol 
               <br>
               <input id="yesCheck" name="number" type="checkbox" onchange="javascript:yesnoCheck();"> Add a number 
               <div id="ifYes" style="display:none">
-                How many numbers? <input name="numbers" placeholder="1" min="1" max="9">
+                How many numbers? <input name="numbers" value="1" min="1" max="9">
               </div>
-              <input name="symbol" type="checkbox"> Add a symbol 
               <br>
-              <input name="camelcase" type="checkbox"> camelCase? 
-              <input name="caps" type="checkbox"> ALL CAPS? 
-              <input name="lower" type="checkbox"> all lowercase? 
+              <input name="cases" type="radio" value="camel"> camelCase? 
+              <input name="cases" type="radio" value="caps"> ALL CAPS? 
+              <input name="cases" type="radio" value="lower" > lower cased?  
+              <input name="cases" type="radio" value="plain" checked> Don't care!  
               <br>
               <button name="submit-button" type="submit" class="pure-button pure-button-primary">Submit</button>
         </fieldset>
