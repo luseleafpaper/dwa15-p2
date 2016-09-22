@@ -12,10 +12,11 @@ For this project, I had to:
 - Create a get_password() function that will use form inputs to return a password that matches the user criteria. This function has if / else blocks and for loops to act on input criteria and add the right number of words or numbers to the password. 
 - Create a is_checked() function that will parse my POST request and standardize some of the fields that would be missing if the checkbox is not filled. 
 - Create an index.php that contains islands of PHP code, including the block that gets the password from logic.php. 
+- Add server and client side verification of the form inputs in logic.php.
 - Create a screen cast 
 - Launch my live site! 
 
-# Demo: [Screencast demo](https://youtu.be/LCsrAHwLNDU)
+# Demo: [Screencast demo](https://youtu.be/cKrO3SqoiEI)
 
 # Any details the instructor or TA needs to know about using your project.
 
