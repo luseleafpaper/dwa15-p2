@@ -2,7 +2,7 @@
 
 For project 2, I had to make an XKCD-style password generator, with some added features to add characters that many modern passwords require, such as numbers and symbols. I've also implemented several of the "optional features", such as manipulating the cases of the words and the number of numbers that I want in my password. 
 
-# Live Site: [p1.luseleafpaper.com](http://p1.luseleafpaper.com)
+# Live Site: [p1.luseleafpaper.com](http://p2.luseleafpaper.com)
 
 # Project Description
 
