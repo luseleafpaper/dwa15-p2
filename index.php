@@ -53,7 +53,7 @@
         ?>
      </div><br> <!--end password -->
 
-     <form class="pure-form" action="" method="post"> <!-- Begin main form -->
+     <form class="pure-form" method="post"> <!-- Begin main form -->
         <fieldset>
           <legend>Generate an XKCD-style password!</legend>
               How many words? (1 through 9) 
@@ -63,7 +63,7 @@
               <br>
               <input id="yesCheck" name="number" type="checkbox" onchange="javascript:yesnoCheck();"> Add a number 
               <div id="ifYes" style="display:none">
-                How many numbers? <input name="numbers" value="1" min="1" max="9">
+                How many numbers? <input name="numbers" type="number" value="1" min="1" max="9">
               </div>
               <br>
               <input name="cases" type="radio" value="camel"> camelCase? 
